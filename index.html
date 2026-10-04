@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Tegar Setiadi — Backend Developer</title>
+
+<meta name="description"
+      content="Tegar Setiadi — Backend Developer, Linux enthusiast and builder.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+
+<style>
+
+    :root {
+        --bg: #07070a;
+        --bg-soft: #0d0d12;
+        --card: #111116;
+        --border: #24242d;
+
+        --text: #f4f4f5;
+        --muted: #92929d;
+
+        --accent: #8b5cf6;
+        --accent-2: #6366f1;
+
+        --radius: 18px;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: var(--bg);
+        color: var(--text);
+
+        font-family: "Inter", sans-serif;
+
+        line-height: 1.6;
+
+        overflow-x: hidden;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .container {
+        width: min(1100px, calc(100% - 40px));
+        margin: auto;
+    }
+
+    /* =========================
+       BACKGROUND
+    ========================== */
+
+    .background {
+        position: fixed;
+        inset: 0;
+
+        pointer-events: none;
+
+        background:
+            radial-gradient(
+                circle at 20% 10%,
+                rgba(139, 92, 246, 0.12),
+                transparent 30%
+            ),
+            radial-gradient(
+                circle at 80% 20%,
+                rgba(99, 102, 241, 0.10),
+                transparent 30%
+            );
+
+        z-index: -2;
+    }
+
+    .grid {
+        position: fixed;
+        inset: 0;
+
+        background-image:
+            linear-gradient(
+                rgba(255,255,255,0.025) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                90deg,
+                rgba(255,255,255,0.025) 1px,
+                transparent 1px
+            );
+
+        background-size: 50px 50px;
+
+        mask-image: linear-gradient(
+            to bottom,
+            black,
+            transparent 80%
+        );
+
+        pointer-events: none;
+
+        z-index: -1;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================== */
+
+    nav {
+        position: fixed;
+
+        top: 0;
+        left: 0;
+        right: 0;
+
+        z-index: 100;
+
+        background: rgba(7,7,10,0.72);
+
+        backdrop-filter: blur(18px);
+
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-inner {
+        height: 70px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        font-family: "JetBrains Mono", monospace;
+
+        font-weight: 600;
+
+        font-size: 18px;
+    }
+
+    .logo span {
+        color: var(--accent);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 28px;
+
+        color: var(--muted);
+
+        font-size: 14px;
+    }
+
+    .nav-links a {
+        transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+        color: var(--text);
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+        min-height: 100vh;
+
+        display: flex;
+        align-items: center;
+
+        padding-top: 70px;
+    }
+
+    .hero-content {
+        max-width: 800px;
+    }
+
+    .terminal-label {
+        display: inline-flex;
+
+        align-items: center;
+        gap: 9px;
+
+        padding: 7px 12px;
+
+        margin-bottom: 25px;
+
+        border: 1px solid var(--border);
+
+        border-radius: 999px;
+
+        background: rgba(255,255,255,0.025);
+
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 12px;
+
+        color: var(--muted);
+    }
+
+    .terminal-dot {
+        width: 7px;
+        height: 7px;
+
+        border-radius: 50%;
+
+        background: #22c55e;
+
+        box-shadow: 0 0 12px #22c55e;
+    }
+
+    .hero h1 {
+        font-size: clamp(52px, 9vw, 105px);
+
+        line-height: 0.95;
+
+        letter-spacing: -0.06em;
+
+        font-weight: 800;
+
+        margin-bottom: 28px;
+    }
+
+    .gradient {
+        background: linear-gradient(
+            120deg,
+            #ffffff,
+            #a78bfa,
+            #6366f1
+        );
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        color: transparent;
+    }
+
+    .hero-description {
+        max-width: 650px;
+
+        font-size: 18px;
+
+        color: var(--muted);
+
+        margin-bottom: 35px;
+    }
+
+    .hero-description strong {
+        color: var(--text);
+    }
+
+    .buttons {
+        display: flex;
+        gap: 12px;
+
+        flex-wrap: wrap;
+    }
+
+    .button {
+        padding: 12px 18px;
+
+        border-radius: 10px;
+
+        border: 1px solid var(--border);
+
+        font-size: 14px;
+
+        font-weight: 600;
+
+        transition: 0.25s;
+    }
+
+    .button.primary {
+        background: var(--text);
+        color: #09090b;
+    }
+
+    .button:hover {
+        transform: translateY(-2px);
+
+        border-color: #454552;
+    }
+
+    .button.primary:hover {
+        box-shadow: 0 10px 30px rgba(255,255,255,0.12);
+    }
+
+    /* =========================
+       SECTIONS
+    ========================== */
+
+    section {
+        padding: 110px 0;
+    }
+
+    .section-header {
+        margin-bottom: 45px;
+    }
+
+    .section-label {
+        font-family: "JetBrains Mono", monospace;
+
+        color: var(--accent);
+
+        font-size: 13px;
+
+        margin-bottom: 10px;
+    }
+
+    .section-title {
+        font-size: 36px;
+
+        letter-spacing: -0.04em;
+    }
+
+    /* =========================
+       ABOUT
+    ========================== */
+
+    .about-grid {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 20px;
+    }
+
+    .card {
+        background: rgba(17,17,22,0.75);
+
+        border: 1px solid var(--border);
+
+        border-radius: var(--radius);
+
+        padding: 28px;
+
+        backdrop-filter: blur(10px);
+
+        transition: 0.25s;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+
+        border-color: #363642;
+    }
+
+    .card h3 {
+        margin-bottom: 12px;
+
+        font-size: 18px;
+    }
+
+    .card p {
+        color: var(--muted);
+
+        font-size: 15px;
+    }
+
+    .code-card {
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 13px;
+
+        line-height: 1.9;
+    }
+
+    .code-key {
+        color: #c084fc;
+    }
+
+    .code-value {
+        color: #a5b4fc;
+    }
+
+    /* =========================
+       PROJECTS
+    ========================== */
+
+    .projects {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 18px;
+    }
+
+    .project {
+        position: relative;
+
+        overflow: hidden;
+    }
+
+    .project-number {
+        font-family: "JetBrains Mono", monospace;
+
+        color: #52525b;
+
+        font-size: 12px;
+
+        margin-bottom: 22px;
+    }
+
+    .project h3 {
+        font-size: 23px;
+
+        margin-bottom: 10px;
+    }
+
+    .project p {
+        color: var(--muted);
+
+        font-size: 14px;
+
+        margin-bottom: 22px;
+    }
+
+    .tags {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 7px;
+    }
+
+    .tag {
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 11px;
+
+        padding: 5px 8px;
+
+        border-radius: 6px;
+
+        background: rgba(139,92,246,0.08);
+
+        border: 1px solid rgba(139,92,246,0.18);
+
+        color: #b7a4ff;
+    }
+
+    /* =========================
+       STACK
+    ========================== */
+
+    .stack {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 10px;
+    }
+
+    .stack-item {
+        padding: 11px 15px;
+
+        border: 1px solid var(--border);
+
+        border-radius: 9px;
+
+        background: var(--card);
+
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 13px;
+
+        color: var(--muted);
+
+        transition: 0.2s;
+    }
+
+    .stack-item:hover {
+        color: var(--text);
+
+        border-color: var(--accent);
+    }
+
+    /* =========================
+       GITHUB
+    ========================== */
+
+    .github {
+        text-align: center;
+    }
+
+    .github-card {
+        padding: 35px;
+
+        display: inline-block;
+
+        width: 100%;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(139,92,246,0.08),
+                rgba(99,102,241,0.03)
+            );
+
+        border: 1px solid var(--border);
+
+        border-radius: var(--radius);
+    }
+
+    .github-card h3 {
+        font-size: 25px;
+
+        margin-bottom: 10px;
+    }
+
+    .github-card p {
+        color: var(--muted);
+
+        margin-bottom: 25px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+        padding: 50px 0;
+
+        border-top: 1px solid var(--border);
+
+        color: var(--muted);
+
+        font-size: 13px;
+    }
+
+    .footer-inner {
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+    }
+
+    .footer-code {
+        font-family: "JetBrains Mono", monospace;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 750px) {
+
+        .nav-links {
+            display: none;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+        }
+
+        .hero-description {
+            font-size: 16px;
+        }
+
+        .about-grid,
+        .projects {
+            grid-template-columns: 1fr;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .footer-inner {
+            flex-direction: column;
+
+            gap: 12px;
+
+            text-align: center;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<div class="background"></div>
+<div class="grid"></div>
+
+<!-- =========================
+     NAVIGATION
+========================== -->
+
+<nav>
+
+```
+<div class="container nav-inner">
+
+    <a href="#" class="logo">
+        Tegar<span>.</span>
+    </a>
+
+    <div class="nav-links">
+
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#stack">Stack</a>
+        <a href="#contact">Contact</a>
+
+    </div>
+
+</div>
+```
+
+</nav>
+
+<!-- =========================
+     HERO
+========================== -->
+
+<header class="hero">
+
+```
+<div class="container">
+
+    <div class="hero-content">
+
+        <div class="terminal-label">
+
+            <span class="terminal-dot"></span>
+
+            available for building cool stuff
+
+        </div>
+
+        <h1>
+
+            Hey, I'm
+            <span class="gradient">Tegar.</span>
+
+        </h1>
+
+        <p class="hero-description">
+
+            <strong>Backend developer</strong>
+            from Indonesia who enjoys building APIs,
+            experimenting with Linux, and turning random
+            ideas into actual projects.
+
+        </p>
+
+        <div class="buttons">
+
+            <a
+                href="https://github.com/TegarSetiadi"
+                target="_blank"
+                class="button primary"
+            >
+                View GitHub →
+            </a>
+
+            <a
+                href="#projects"
+                class="button"
+            >
+                Explore Projects
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</header>
+
+<!-- =========================
+     ABOUT
+========================== -->
+
+<section id="about">
+
+```
+<div class="container">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            01 / ABOUT
+        </div>
+
+        <h2 class="section-title">
+            A little about me.
+        </h2>
+
+    </div>
+
+
+    <div class="about-grid">
+
+        <div class="card">
+
+            <h3>
+                👨‍💻 Developer
+            </h3>
+
+            <p>
+                I mostly work on backend systems,
+                APIs, databases, and services.
+                I enjoy understanding how things
+                work under the hood instead of
+                just making them work.
+            </p>
+
+        </div>
+
+
+        <div class="card code-card">
+
+            <div>
+                <span class="code-key">name</span>:
+                <span class="code-value">
+                    "Tegar Setiadi"
+                </span>
+            </div>
+
+            <div>
+                <span class="code-key">role</span>:
+                <span class="code-value">
+                    "Backend Developer"
+                </span>
+            </div>
+
+            <div>
+                <span class="code-key">location</span>:
+                <span class="code-value">
+                    "Indonesia 🇮🇩"
+                </span>
+            </div>
+
+            <div>
+                <span class="code-key">status</span>:
+                <span class="code-value">
+                    "building..."
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================
+     PROJECTS
+========================== -->
+
+<section id="projects">
+
+```
+<div class="container">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            02 / PROJECTS
+        </div>
+
+        <h2 class="section-title">
+            Things I've been building.
+        </h2>
+
+    </div>
+
+
+    <div class="projects">
+
+
+        <article class="card project">
+
+            <div class="project-number">
+                PROJECT_001
+            </div>
+
+            <h3>
+                ☁️ SimpCloud
+            </h3>
+
+            <p>
+                A cloud-oriented application focused
+                on modern backend architecture,
+                APIs and database integration.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">Laravel</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">REST API</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card project">
+
+            <div class="project-number">
+                PROJECT_002
+            </div>
+
+            <h3>
+                🖥️ ZiumOS
+            </h3>
+
+            <p>
+                Experimental operating-system project
+                built to explore low-level programming,
+                boot processes and system architecture.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">C++</span>
+                <span class="tag">Assembly</span>
+                <span class="tag">x86</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card project">
+
+            <div class="project-number">
+                PROJECT_003
+            </div>
+
+            <h3>
+                🎣 Minecraft Fishing
+            </h3>
+
+            <p>
+                Stardew Valley-inspired fishing
+                minigame for Minecraft with
+                custom gameplay mechanics.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">Java</span>
+                <span class="tag">Forge</span>
+                <span class="tag">Minecraft</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card project">
+
+            <div class="project-number">
+                PROJECT_∞
+            </div>
+
+            <h3>
+                🧪 Random Experiments
+            </h3>
+
+            <p>
+                Linux experiments, scripts, bots,
+                automation, game mods and other
+                questionable ideas that somehow became
+                projects.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">Linux</span>
+                <span class="tag">Python</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Shell</span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================
+     STACK
+========================== -->
+
+<section id="stack">
+
+```
+<div class="container">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            03 / STACK
+        </div>
+
+        <h2 class="section-title">
+            Tools I like.
+        </h2>
+
+    </div>
+
+
+    <div class="stack">
+
+        <span class="stack-item">PHP</span>
+        <span class="stack-item">Laravel</span>
+        <span class="stack-item">Node.js</span>
+        <span class="stack-item">Python</span>
+        <span class="stack-item">Java</span>
+        <span class="stack-item">C++</span>
+
+        <span class="stack-item">MySQL</span>
+        <span class="stack-item">PostgreSQL</span>
+        <span class="stack-item">Supabase</span>
+
+        <span class="stack-item">Docker</span>
+        <span class="stack-item">Linux</span>
+        <span class="stack-item">Git</span>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================
+     CONTACT
+========================== -->
+
+<section id="contact">
+
+```
+<div class="container">
+
+    <div class="github">
+
+        <div class="section-header">
+
+            <div class="section-label">
+                04 / CONTACT
+            </div>
+
+            <h2 class="section-title">
+                Let's build something.
+            </h2>
+
+        </div>
+
+
+        <div class="github-card">
+
+            <h3>
+                Find me on GitHub
+            </h3>
+
+            <p>
+                Check out my repositories,
+                experiments and whatever I'm
+                currently breaking.
+            </p>
+
+            <a
+                href="https://github.com/TegarSetiadi"
+                target="_blank"
+                class="button primary"
+            >
+                github.com/TegarSetiadi →
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+```
+<div class="container footer-inner">
+
+    <span>
+        © 2026 Tegar Setiadi
+    </span>
+
+    <span class="footer-code">
+        built with HTML + CSS
+    </span>
+
+</div>
+```
+
+</footer>
+
+</body>
+</html>
